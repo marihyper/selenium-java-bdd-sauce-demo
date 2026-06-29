@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+
+# IDE / compiler output
+bin/
+out/
+
+# Keep the wrapper jar so the repo is self-contained
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS / logs
+*.log
+.DS_Store
