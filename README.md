@@ -71,6 +71,8 @@ Each line maps to a reusable step definition; e.g. `Given I am on the homepage` 
 
 ## Running the tests
 
+On **macOS / Linux / Git Bash**:
+
 ```bash
 # Chrome (default), headless
 ./gradlew test
@@ -82,7 +84,21 @@ Each line maps to a reusable step definition; e.g. `Given I am on the homepage` 
 ./gradlew test -Dselenide.headless=false
 ```
 
-On Windows PowerShell use `.\gradlew.bat test` (add `"-Dbrowser=firefox"` in quotes).
+On **Windows PowerShell**, quote every `-D...` property (see note below):
+
+```powershell
+.\gradlew.bat test
+.\gradlew.bat test "-Dbrowser=firefox"
+.\gradlew.bat test "-Dselenide.headless=false"
+.\gradlew.bat test "-Dbrowser=firefox" "-Dselenide.headless=false"
+```
+
+> **PowerShell gotcha:** an unquoted `-D` property whose key contains a dot
+> (e.g. `-Dselenide.headless=false`) is mis-tokenized by PowerShell, so Gradle
+> sees `.headless=false` as a separate task and fails with
+> *"Task '.headless=false' not found"*. Wrapping the property in quotes
+> (`"-Dselenide.headless=false"`) fixes it. The dot-free `-Dbrowser=chrome`
+> happens to work either way.
 
 ### Reports
 
